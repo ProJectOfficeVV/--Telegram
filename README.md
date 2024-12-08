@@ -35,7 +35,7 @@ yc compute instance create-with-container \
   --network-interface subnet-name=default-ru-central1-a,nat-ip-version=ipv4 \
   --service-account-name service-acc \
   --docker-compose-file compose.yaml
-nan
+
 https://yandex.cloud/ru/docs/compute/operations/vm-connect/ssh
 ALLOW OS LOGIN IN INSTANCE EDIT
 yc compute ssh --name my-vm --folder-id ******
