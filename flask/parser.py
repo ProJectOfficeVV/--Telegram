@@ -48,20 +48,20 @@ def build_tg_text(user_data):
     text = f'Спасибо за выбор VVLegalBot!\nТвоя заявка *№{user_data["order_id"]}* принята в работу.\nСовсем скоро с тобой свяжется специалист и уточнит детали\n\n*--- Выбранные услуги ---*\n'
 
     for service in user_data["order"]:
-        text += f'{service["group"]}\n{service["name"]} | {handle_price_line(service["price"])}\n'
+        text += f'{service["group"]}\n{service["name"]}\n'
         text += f'_{service["info"]}_\n\n'
     
     text += "*--- Первичные консультации ---*\n"
     for consult in user_data["consults"]:
         if "Я не уверен" in consult["group_name"]:
-            text += f'{consult["symbol"]} {consult["name"]} | {handle_price_line(consult["price"])}\n\n'
+            text += f'{consult["symbol"]} {consult["name"]}\n\n'
         else:
-            text += f'{consult["group_name"]}\n{consult["name"]} | {handle_price_line(consult["price"])}\n\n'
+            text += f'{consult["group_name"]}\n{consult["name"]}\n\n'
         
         
 
-    text += f'================\n*Стоимость выбранных услуг: {price_to_string(sum_price(user_data["consults"]))}*'
-    text += f'\n\nЕсли ты хочешь отправить нам дополнительные материалы -- пришли их нам на почту projectoffice@vkusvill.ru. Не забудь указать номер своей заявки: {user_data["order_id"]}.'
+    # text += f'================\n*Стоимость выбранных услуг: {price_to_string(sum_price(user_data["consults"]))}*'
+    text += f'Первичная консультация (вводный звонок) по твоей задаче бесплатная. Далее оказание услуг проводится на платной основе.\n\nЕсли ты хочешь отправить нам дополнительные материалы -- пришли их нам на почту projectoffice@vkusvill.ru. Не забудь указать номер своей заявки: *{user_data["order_id"]}*.'
     return text
 
 def handle_price_line(price):
@@ -89,15 +89,16 @@ def parse_service_id(id):
 def parse_order_to_json(user_data):
     return {
         "order_id": user_data["order_id"],
-        "total_price": sum_price(user_data["consults"]),
+        # "total_price": sum_price(user_data["consults"]),
         "order": parse_orders_to_json(user_data["order"]),
         "consults": parse_consults_to_json(user_data["consults"]),
     }
 
 def build_team_tg_text(user_data, tg_id):
+    
     accept_ads = "Клиент принял рекламную рассылку" if user_data["personal"]["accept-ads"] else "Клиент не принял рекламную рассылку"
-    info = user_data["text"].split("и уточнит детали")[1].split("Если ты хочешь")[0]
-    return f'Новая заявка №{user_data["order_id"]}\n{user_data["personal"]["name"]} | {user_data["personal"]["phone"]} | @{tg_id}{info} {accept_ads}'.replace("*","")
+    info = user_data["text"].split("и уточнит детали")[1].split("Первичная консультация")[0]
+    return f'Сформировать шаблон отбивки на заявку на основании следующего текста:\nНовая заявка №{user_data["order_id"]}\n{user_data["personal"]["name"]} | {user_data["personal"]["phone"]} | @{tg_id}{info}\n{accept_ads}'.replace("*","").replace("_","")
 
 def parse_orders_to_json(n):
     return [[n["info"], n["key"]] for n in n]

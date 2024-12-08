@@ -17,6 +17,23 @@ h1 {
     text-align: center;
 }
 
+#service-prices {
+    border-collapse: collapse; 
+    width: 100%;
+}
+
+#service-prices tr th {
+    border: 2px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+#service-prices tr td {
+    border: 2px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
 .p-center {
     color: #999999 !important;
     text-align: center;

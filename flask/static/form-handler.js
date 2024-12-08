@@ -147,7 +147,7 @@ function add_check_services(services) {
         table.appendChild(tr)
     }
 }
-
+// TODO Remove total
 function add_check_consults(services) {
     const table = document.getElementById("consult-table")
     let groups = []
@@ -170,9 +170,9 @@ function add_check_consults(services) {
         table.appendChild(tr)
         total = total + Number(group.consult_item.price.replace(/\D/g,''))
     }
-    total = total.toString()
-    document.getElementById("total-price").innerHTML = 
-        `${total.substr(0, total.length - 3)} ${total.substr(total.length - 3)}₽`
+    // total = total.toString()
+    // document.getElementById("total-price").innerHTML = 
+    //     `${total.substr(0, total.length - 3)} ${total.substr(total.length - 3)}₽`
 }
 
 function parse_selected_services() {

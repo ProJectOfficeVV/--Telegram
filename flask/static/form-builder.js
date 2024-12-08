@@ -116,7 +116,7 @@ function build_HTML_service(item) {
     return service
 }
 
-
+// TODO Remove total
 function build_thank_you_page(order_obj, groups_json) {
     if (order_obj.main) { return }
     document.getElementById("order-id").innerText = order_obj.order_id
@@ -146,7 +146,7 @@ function build_thank_you_page(order_obj, groups_json) {
         `
         consult_table.appendChild(tr)
     }
-    const total = order_obj.total_price.toString()
-    document.getElementById("total-price-th").innerText = 
-        `${total.substr(0, total.length - 3)} ${total.substr(total.length - 3)}₽`
+    // const total = order_obj.total_price.toString()
+    // document.getElementById("total-price-th").innerText = 
+    //     `${total.substr(0, total.length - 3)} ${total.substr(total.length - 3)}₽`
 }
