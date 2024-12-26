@@ -144,9 +144,10 @@ function add_check_services(services) {
     for (const service of services) {
         service.symbol = groups_json[service.group].symbol
         const tr = document.createElement("tr")
+        const service_name = service.symbol == "🤷‍♂️" ? "Помощь в постановке задачи" : service.name
         tr.innerHTML = `
             <th>
-                ${service.symbol} ${service.name}
+                ${service.symbol} ${service_name}
                 <small id="personal-name-help" class="form-text text-muted mb-2">${service.info}</small>
             </th>
         `
