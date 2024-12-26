@@ -125,28 +125,28 @@ function build_thank_you_page(order_obj, groups_json) {
     for(let order of order_obj.order) {
         const tr = document.createElement("tr")
         const group = groups_json[Number(order[1][1])]
+        let group_name = group.name
+        let title = group.items[order[1][3]].name
+        if (group_name == "🤷‍♂️ Помощь в постановке задачи") {
+            group_name = ""
+            title = "🤷‍♂️ Помощь в постановке задачи"
+        }
         tr.innerHTML = `
             <th>
-            ${group.items[order[1][3]].name}
-            <small class="form-text text-muted">${group.name}</small>
+            ${title}
+            <small class="form-text text-muted">${group_name}</small>
             </th>
         `
         order_table.appendChild(tr)
     }
 
     const consult_table = document.getElementById("consult-table-th")
-    for(let consult of order_obj.consults) {
-        const tr = document.createElement("tr")
-        const group = groups_json[Number(consult)]
-        tr.innerHTML = `
-        <th width="80%">
-        ${group.consult_item.name}
-        </th>
-        <th width="20%"><span class="badge badge-secondary">${group.consult_item.price}</span></th>
-        `
-        consult_table.appendChild(tr)
-    }
-    // const total = order_obj.total_price.toString()
-    // document.getElementById("total-price-th").innerText = 
-    //     `${total.substr(0, total.length - 3)} ${total.substr(total.length - 3)}₽`
+    const tr = document.createElement("tr")
+    tr.innerHTML = `
+    <th width="80%">
+    Первичный (вводный) звонок перед началом работ
+    </th>
+    <th width="20%"><span class="badge badge-secondary"><Бесплатно></span></th>
+    `
+    consult_table.appendChild(tr)
 }
