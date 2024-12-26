@@ -51,17 +51,14 @@ def build_tg_text(user_data):
         text += f'{service["group"]}\n{service["name"]}\n'
         text += f'_{service["info"]}_\n\n'
     
-    text += "*--- Первичные консультации ---*\n"
-    for consult in user_data["consults"]:
-        if "Я не уверен" in consult["group_name"]:
-            text += f'{consult["symbol"]} {consult["name"]}\n\n'
-        else:
-            text += f'{consult["group_name"]}\n{consult["name"]}\n\n'
-        
-        
+    text += "*--- Первичная консультация ---*"
+    # for consult in user_data["consults"]:
+    #     if "Я не уверен" in consult["group_name"]:
+    #         text += f'{consult["symbol"]} {consult["name"]}\n\n'
+    #     else:
+    #         text += f'{consult["group_name"]}\n{consult["name"]}\n\n'
 
-    # text += f'================\n*Стоимость выбранных услуг: {price_to_string(sum_price(user_data["consults"]))}*'
-    text += f'Первичная консультация (вводный звонок) по твоей задаче бесплатная. Далее оказание услуг проводится на платной основе.\n\nЕсли ты хочешь отправить нам дополнительные материалы -- пришли их нам на почту projectoffice@vkusvill.ru. Не забудь указать номер своей заявки: *{user_data["order_id"]}*.'
+    text += f'\nПервичная консультация (вводный звонок) по твоей задаче бесплатная. Далее оказание услуг проводится на платной основе.\n\nЕсли ты хочешь отправить нам дополнительные материалы -- пришли их нам на почту projectoffice@vkusvill.ru. Не забудь указать номер своей заявки: *{user_data["order_id"]}*.'
     return text
 
 def handle_price_line(price):
