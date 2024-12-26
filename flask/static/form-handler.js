@@ -2,11 +2,17 @@ const service_alert_text = "Пожалуйста выберите хотя бы 
 const personal_alert_text = "Пожалуйста заполните поля с именем и номером телефона"
 const privacy_alert_text =  "Пожалуйста ознакомьтесь с условиями обработки данных и нажмите галочку напротив"
 
-function handle_service_checkbox(e) {
-    freeze_group_on_select(e.target.id[1])
-    set_required_on_select()
+async function handle_service_checkbox(e) {
+    await freeze_group_on_select(e.target.id[1])
+    await set_required_on_select()
+    await sleep(10)
+    document.getElementById(e.target.id).disabled = true
+    await sleep(400)
+    document.getElementById(e.target.id).disabled = false
 }
-
+function sleep (time) {
+  return new Promise((resolve) => setTimeout(resolve, time));
+}
 function freeze_group_on_select(group_id) {
     const checks = $.map($(`#g${group_id}c > div > div > .form-check > input`), input => input.checked)
     if (checks.includes(true)) {
@@ -158,21 +164,14 @@ function add_check_consults(services) {
         }
     }
 
-    for (const group_id of groups) {
-        const tr = document.createElement("tr")
-        const group = groups_json[group_id]
-        tr.innerHTML = `
-            <th width="80%">
-            ${group.symbol} ${group.consult_item.name}
-            </th>
-            <th width="20%"><span class="badge badge-secondary">${group.consult_item.price}</span></th>
-        `
-        table.appendChild(tr)
-        total = total + Number(group.consult_item.price.replace(/\D/g,''))
-    }
-    // total = total.toString()
-    // document.getElementById("total-price").innerHTML = 
-    //     `${total.substr(0, total.length - 3)} ${total.substr(total.length - 3)}₽`
+    const tr = document.createElement("tr")
+    tr.innerHTML = `
+        <th width="80%">
+        Первичный (вводный) звонок перед началом работ
+        </th>
+        <th width="20%"><span class="badge badge-secondary">Бесплатно</span></th>
+    `
+    table.appendChild(tr)
 }
 
 function parse_selected_services() {
