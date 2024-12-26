@@ -128,8 +128,8 @@ function build_thank_you_page(order_obj, groups_json) {
         let group_name = group.name
         let title = group.items[order[1][3]].name
         if (group_name == "🤷‍♂️ Помощь в постановке задачи") {
-            group_name = ""
-            title = "🤷‍♂️ Помощь в постановке задачи"
+            group_name = "🤷‍♂️ Общая консультация"
+            title = "Помощь в постановке задачи"
         }
         tr.innerHTML = `
             <th>
