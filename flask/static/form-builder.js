@@ -146,7 +146,7 @@ function build_thank_you_page(order_obj, groups_json) {
     <th width="80%">
     Первичный (вводный) звонок перед началом работ
     </th>
-    <th width="20%"><span class="badge badge-secondary"><Бесплатно></span></th>
+    <th width="20%"><span class="badge badge-secondary">Бесплатно</span></th>
     `
     consult_table.appendChild(tr)
 }
