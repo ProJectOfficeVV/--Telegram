@@ -98,7 +98,7 @@ def build_team_tg_text(user_data, tg_id):
     
     accept_ads = "Клиент принял рекламную рассылку" if user_data["personal"]["accept-ads"] else "Клиент не принял рекламную рассылку"
     info = user_data["text"].split("и уточнит детали")[1].split("Первичная консультация")[0]
-    return f'Сформировать шаблон отбивки на заявку на основании следующего текста:\nНовая заявка №{user_data["order_id"]}\n{user_data["personal"]["name"]} | {user_data["personal"]["phone"]} | @{tg_id}{info}\n{accept_ads}'.replace("*","").replace("_","")
+    return f'Новая заявка №{user_data["order_id"]}\n{user_data["personal"]["name"]} | {user_data["personal"]["phone"]} | @{tg_id}{info}\n{accept_ads}'.replace("*","").replace("_","")
 
 def parse_orders_to_json(n):
     return [[n["info"], n["key"]] for n in n]
