@@ -158,7 +158,6 @@ function add_check_services(services) {
 function add_check_consults(services) {
     const table = document.getElementById("consult-table")
     let groups = []
-    let total = 0
     for (const service of services) {
         if (!groups.includes(service.group)) {
             groups.push(service.group)
@@ -188,7 +187,7 @@ function parse_selected_services() {
 }
 
 function build_selected_service_object(service) {
-    let item_id = service.id.length() == 5 ? `${service.id[3]}${service.id[4]}` : service.id[3]
+    let item_id = service.id.length == 5 ? `${service.id[3]}${service.id[4]}` : service.id[3]
     const item = groups_json[service.id[1]].items[item_id]
     return {
         group: service.id[1],

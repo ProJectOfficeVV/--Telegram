@@ -83,6 +83,9 @@ def price_to_string(price):
     return f"{str(price)[:-3]} {str(price)[-3]}00₽"
 
 def parse_service_id(id):
+    print(id)
+    if len(id) == 6: 
+        return int(id[1]), int(f"{id[3]}{id[4]}")
     return int(id[1]), int(id[3])
 
 def parse_order_to_json(user_data):
