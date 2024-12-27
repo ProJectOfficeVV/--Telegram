@@ -410,8 +410,8 @@
         const order_obj = JSON.parse('{{order_json|tojson|safe}}')
         if (thank_you_page) {
             
-            document.getElementById("form-container").hidden = true
-            document.getElementById("thank-you-container").hidden = false
+            document.getElementById("form-container").hidden = false
+            document.getElementById("thank-you-container").hidden = true
         }
     </script>
     <script src="{{url_for('static', filename='form-builder.js')}}"></script>

@@ -126,6 +126,7 @@ function build_thank_you_page(order_obj, groups_json) {
         const tr = document.createElement("tr")
         const group = groups_json[Number(order[1][1])]
         let group_name = group.name
+        console.log(order[1])
         let title = group.items[order[1][3]].name
         if (group_name == "🤷‍♂️ Помощь в постановке задачи") {
             group_name = "🤷‍♂️ Общая консультация"
