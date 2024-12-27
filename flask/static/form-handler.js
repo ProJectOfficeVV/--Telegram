@@ -188,7 +188,8 @@ function parse_selected_services() {
 }
 
 function build_selected_service_object(service) {
-    const item = groups_json[service.id[1]].items[service.id[3]]
+    let item_id = service.id.length() == 5 ? `${service.id[3]}${service.id[4]}` : service.id[3]
+    const item = groups_json[service.id[1]].items[item_id]
     return {
         group: service.id[1],
         name: item.name,
