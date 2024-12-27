@@ -31,6 +31,18 @@ function add_services(groups) {
             subgroup_container.appendChild(service)
         }
     }
+
+    $("textarea").keypress(function(e){
+        if(e.key == "*" || e.key == "_")
+            e.preventDefault()
+    })
+    
+    $("input").keypress(function(e){
+        if(e.key == "*" || e.key == "_")
+            e.preventDefault()
+    })
+
+
     $('.service-checkbox').click(function(e) {
         handle_service_checkbox(e)
     })
