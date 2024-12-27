@@ -33,12 +33,12 @@ function add_services(groups) {
     }
 
     $("textarea").keypress(function(e){
-        if(e.key == "*" || e.key == "_" || e.key == "@" || e.key == "#")
+        if(e.key == "*" || e.key == "_" || e.key == "@" || e.key == "#" || e.key == "&")
             e.preventDefault()
     })
 
     $("input").keypress(function(e){
-        if(e.key == "*" || e.key == "_" || e.key == "@" || e.key == "#")
+        if(e.key == "*" || e.key == "_" || e.key == "@" || e.key == "#" || e.key == "&")
             e.preventDefault()
     })
 
